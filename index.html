@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathCloud-Tech Web Proposal</title>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCjVwHfCK0kiXwes1fbKok-EU-aTnuJ2s",
+      authDomain: "words-a53db.firebaseapp.com",
+      databaseURL: "https://words-a53db-default-rtdb.firebaseio.com",
+      projectId: "words-a53db",
+      storageBucket: "words-a53db.firebasestorage.app",
+      messagingSenderId: "432659334745",
+      appId: "1:432659334745:web:504e12c193a04b0a6c9348"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 to-purple-200 min-h-screen font-[Poppins]">
+  <header class="bg-white shadow p-4 flex items-center justify-between px-8">
+    <div class="flex items-center space-x-4">
+      <img src="logo.png" class="w-10 h-10" alt="logo">
+      <h1 class="text-xl md:text-2xl text-purple-700 font-bold">MathCloud-Tech Web Services</h1>
+    </div>
+    <button onclick="downloadPDF()" class="bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700 text-sm">Download Proposal PDF</button>
+  </header>
+
+  <section class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-2xl font-semibold text-center mb-4">Our Specialties</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl p-4 shadow-xl hover:shadow-2xl transition">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">School Websites</h3>
+        <p>For primary, secondary, and tertiary institutions. Includes portal, login, attendance, result system, and more.</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-xl hover:shadow-2xl transition">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Company Websites</h3>
+        <p>Corporate design, product showcase, dynamic forms, admin dashboards, email integration, and more.</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-xl hover:shadow-2xl transition">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Personal/Portfolio Websites</h3>
+        <p>Showcase your talent, achievements, blogs, resume/CV, and embedded projects or videos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-2xl font-semibold text-center mb-4">Sample Projects</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <iframe class="w-full h-72 rounded-xl shadow-xl" src="https://orliacademy.online" title="School Website Example"></iframe>
+      <iframe class="w-full h-72 rounded-xl shadow-xl" src="https://creditkarma-7854a.web.app" title="Credit Score Project"></iframe>
+    </div>
+  </section>
+
+  <section class="p-6 max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl mt-6">
+    <h2 class="text-2xl font-semibold text-purple-700 text-center mb-6">Submit a Website Proposal</h2>
+    <form id="proposalForm" class="space-y-4">
+      <input type="text" id="clientName" placeholder="Your Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <input type="email" id="clientEmail" placeholder="Your Email" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <input type="text" id="businessName" placeholder="Business/Company Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <label class="block font-semibold">Select Features You Want:</label>
+      <div class="grid grid-cols-2 gap-2">
+        <label><input type="checkbox" value="Home Page"> Home Page</label>
+        <label><input type="checkbox" value="About Us"> About Us</label>
+        <label><input type="checkbox" value="Services"> Services</label>
+        <label><input type="checkbox" value="Contact Form"> Contact Form</label>
+        <label><input type="checkbox" value="Gallery/Portfolio"> Gallery</label>
+        <label><input type="checkbox" value="Blog Section"> Blog</label>
+        <label><input type="checkbox" value="Admin Panel"> Admin Panel</label>
+        <label><input type="checkbox" value="Live Chat"> Live Chat</label>
+      </div>
+      <textarea id="additionalInfo" placeholder="Any additional info..." class="w-full p-3 border border-purple-300 rounded-xl"></textarea>
+      <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-purple-700">Submit Proposal</button>
+    </form>
+    <p id="successMessage" class="text-green-600 mt-4 hidden">Proposal submitted successfully!</p>
+  </section>
+
+  <section class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-2xl font-semibold text-center mb-4">What Our Clients Say</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded-xl shadow-lg">
+        <p class="italic">“MathCloud-Tech built our school portal in just 2 weeks. Everything works flawlessly.”</p>
+        <p class="mt-2 font-bold">— Mrs. Grace, Orli Academy</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-lg">
+        <p class="italic">“Our company website now attracts more clients thanks to their great design and SEO.”</p>
+        <p class="mt-2 font-bold">— Mr. Bayo, Crescent Holdings</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-lg">
+        <p class="italic">“My personal site helped me land freelance gigs. The blog feature is amazing!”</p>
+        <p class="mt-2 font-bold">— Tolu O., Graphic Designer</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm p-4 mt-10 text-gray-600">
+    &copy; 2025 MathCloud-Tech Web Service. All rights reserved.<br>
+    Suggested domain: <strong>www.mathcloudtech.com.ng</strong> – Available via WhoGoHost, HostAfrica, or Namecheap.
+  </footer>
+
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+  </style>
+
+  <script>
+    const form = document.getElementById("proposalForm");
+    const message = document.getElementById("successMessage");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("clientName").value;
+      const email = document.getElementById("clientEmail").value;
+      const business = document.getElementById("businessName").value;
+      const features = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value);
+      const info = document.getElementById("additionalInfo").value;
+
+      db.collection("websiteProposals").add({
+        name, email, business, features, info, timestamp: new Date()
+      }).then(() => {
+        message.classList.remove("hidden");
+        form.reset();
+      });
+    });
+
+    function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const now = new Date();
+  const today = now.toDateString();
+
+  doc.setFontSize(12);
+  doc.text("Website Development Proposal", 10, 10);
+  doc.setFontSize(10);
+  doc.text("Submitted by:", 10, 20);
+  doc.text("MathCloud-Tech Web Service", 10, 26);
+  doc.text("Email: marshall12340@gmail.com", 10, 32);
+  doc.text("Phone: +2348102341648", 10, 38);
+  doc.text("Date: " + today, 10, 44);
+
+  doc.setFontSize(12);
+  doc.text("Proposal for Website Design & Development", 10, 54);
+
+  doc.setFontSize(10);
+  doc.text("Dear [Client's Name / Company Name],", 10, 64);
+  doc.text("Thank you for considering MathCloud-Tech Web Service...", 10, 72);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("1. Project Overview", 10, 84);
+  doc.setFont(undefined, 'normal');
+  doc.text("We propose the design and development of a fully responsive...", 10, 90);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("2. Features & Functionality", 10, 100);
+  doc.setFont(undefined, 'normal');
+  doc.text("A. Core Pages", 10, 108);
+  doc.text("- Home
+- About Us
+- Services / Products
+- Gallery / Portfolio
+- Blog or News (optional)
+- Contact Us", 12, 114);
+
+  doc.text("B. Functional Features", 10, 144);
+  doc.text("- Custom, responsive UI/UX
+- Admin panel (optional CMS)
+- WhatsApp & social media integration
+- Live chat (optional)
+- SEO optimization
+- SSL integration
+- Auto email replies
+- Google Map
+- Performance optimization", 12, 150);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("3. Technical Details", 10, 200);
+  doc.setFont(undefined, 'normal');
+  doc.text("Tech Stack: HTML, CSS, JS, PHP/Firebase
+Hosting: Shared/Cloud
+CMS: WordPress or Custom", 10, 206);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("4. Timeline", 10, 220);
+  doc.setFont(undefined, 'normal');
+  doc.text("Requirements: 1–2 days
+Design: 3–5 days
+Development: 5–7 days
+Review: 1–2 days
+Total: 10–14 days", 10, 226);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("5. Cost Breakdown (₦)", 10, 246);
+  doc.setFont(undefined, 'normal');
+  doc.text("Domain: ₦55,000
+Hosting: ₦35,000
+SSL: ₦8,000
+Design & Dev: ₦150,000
+Admin Panel: ₦40,000
+Maintenance: ₦15,000
+Total: ₦303,000", 10, 252);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("6. Payment Terms", 10, 278);
+  doc.setFont(undefined, 'normal');
+  doc.text("60% upfront, 40% on completion
+Account: Unity Bank, 0025035416, Marshall Jacob", 10, 284);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("7. Deliverables", 10, 296);
+  doc.setFont(undefined, 'normal');
+  doc.text("- Full website
+- Admin access
+- Source files
+- Credentials
+- Documentation", 10, 302);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("8. About Us", 10, 320);
+  doc.setFont(undefined, 'normal');
+  doc.text("Creative tech firm delivering reliable, scalable web solutions.", 10, 326);
+
+  doc.setFont(undefined, 'bold');
+  doc.text("9. Next Steps", 10, 338);
+  doc.setFont(undefined, 'normal');
+  doc.text("Sign or confirm via email to proceed.
+
+Client Signature: _________________________
+Date: _________________________
+
+Accepted by MathCloud-Tech Web Service
+Signature: _________________________
+Date: _________________________", 10, 344);
+
+  doc.save("MathCloud_Web_Proposal.pdf");
+} = window.jspdf;
+      const doc = new jsPDF();
+      doc.text("MathCloud-Tech Web Proposal", 10, 10);
+      doc.text("Our Services:\n- School Websites\n- Company Websites\n- Portfolio Sites", 10, 20);
+      doc.text("Features:\n• Admin Panel\n• Blog\n• Contact Form\n• Live Chat", 10, 40);
+      doc.text("Testimonials:\n\"Excellent service, great results!\" - Orli Academy\n\"Professional and fast delivery.\" - Crescent Holdings", 10, 60);
+      doc.text("Suggested Domain: www.mathcloudtech.com.ng", 10, 90);
+      doc.save("mathcloud-tech-proposal.pdf");
+    }
+  </script>
+</body>
+</html>

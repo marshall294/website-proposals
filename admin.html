@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Submitted Proposals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(to right, #dbeafe, #f3e8ff); }
+    .glass {
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-indigo-200 min-h-screen p-4">
+
+  <header class="text-center mb-6">
+    <h1 class="text-3xl font-bold text-purple-700">📊 Admin Dashboard</h1>
+    <p class="text-gray-600">View all submitted website proposals</p>
+  </header>
+
+  <section class="max-w-6xl mx-auto bg-white shadow-2xl rounded-3xl p-6 glass">
+    <table class="min-w-full table-auto border-collapse border border-purple-300 rounded-xl overflow-hidden">
+      <thead class="bg-purple-200 text-purple-800 text-left">
+        <tr>
+          <th class="p-3 border border-purple-300">Name</th>
+          <th class="p-3 border border-purple-300">Email</th>
+          <th class="p-3 border border-purple-300">Business</th>
+          <th class="p-3 border border-purple-300">Features</th>
+          <th class="p-3 border border-purple-300">Date</th>
+        </tr>
+      </thead>
+      <tbody id="proposalTable" class="text-sm text-gray-800 bg-white">
+        <tr><td colspan="5" class="text-center py-4 text-gray-400 italic">Loading proposals...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCNQbqTQvKwrtpbGXHgu56hbAVaKgIQ7nc",
+  authDomain: "mathcloud-72a42.firebaseapp.com",
+  databaseURL: "https://mathcloud-72a42-default-rtdb.firebaseio.com",
+  projectId: "mathcloud-72a42",
+  storageBucket: "mathcloud-72a42.firebasestorage.app",
+  messagingSenderId: "123322117435",
+  appId: "1:123322117435:web:ff3d2ac5c9dedc1a439b1e"
+};
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const tableBody = document.getElementById("proposalTable");
+    db.collection("websiteProposals").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+      tableBody.innerHTML = "";
+      if (snapshot.empty) {
+        tableBody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-gray-400 italic">No proposals found.</td></tr>`;
+        return;
+      }
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const row = `
+          <tr class="hover:bg-purple-50 transition">
+            <td class="p-3 border border-purple-100">${data.name}</td>
+            <td class="p-3 border border-purple-100">${data.email}</td>
+            <td class="p-3 border border-purple-100">${data.business}</td>
+            <td class="p-3 border border-purple-100">${(data.features || []).join(", ")}</td>
+            <td class="p-3 border border-purple-100">${new Date(data.timestamp?.seconds * 1000).toLocaleString()}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    });
+  </script>
+</body>
+</html>

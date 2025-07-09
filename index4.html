@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MathCloud-Tech Web Proposal</title>
+  <link rel="icon" href="logo.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="output.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-up { animation: fadeInUp 1s ease-out both; }
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 to-purple-200 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex flex-col md:flex-row items-center justify-between px-4 md:px-8 animate-up">
+    <div class="flex items-center space-x-3">
+      <img src="logo.png" alt="Logo" class="w-10 h-10" />
+      <h1 class="text-xl md:text-2xl font-bold text-purple-700 text-center">MathCloud-Tech Web Services</h1>
+    </div>
+    <a href="assets/MathCloud_Web_Proposal.pdf" download class="mt-3 md:mt-0 bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700 text-sm">
+      Download Proposal PDF
+    </a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="px-4 py-6 text-center max-w-3xl mx-auto animate-up">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-700 leading-tight">
+      We Build Smart, Scalable,<br class="sm:hidden" /> and Stunning Websites.
+    </h2>
+    <p class="mt-4 text-gray-600 text-base md:text-lg">
+      Tailored for schools, businesses, and individuals with modern design and speed.
+    </p>
+  </section>
+
+  <!-- Our Specialties -->
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-2xl font-semibold text-center mb-4">Our Specialties</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-lg font-bold text-purple-600 mb-2">School Websites</h3>
+        <p>Portals, result checker, login, attendance & full backend systems.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-lg font-bold text-purple-600 mb-2">Company Websites</h3>
+        <p>Corporate branding, product showcase, dashboards, and lead capture forms.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-lg font-bold text-purple-600 mb-2">Portfolio Websites</h3>
+        <p>Perfect for freelancers, designers, professionals — embed work and videos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Projects -->
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-2xl font-semibold text-center mb-4">Sample Projects</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+<iframe
+  class="w-full h-72 rounded-xl shadow"
+  src="https://top-class-property-investment-servi.vercel.app/"
+  title="Orli Academy"
+  allow="autoplay; fullscreen; clipboard-write; encrypted-media; accelerometer; gyroscope"
+  loading="lazy"
+></iframe>
+
+<iframe
+  class="w-full h-72 rounded-xl shadow"
+  src="https://aishatu-wedding-proposal.vercel.app/"
+  title="Credit Project"
+  allow="autoplay; fullscreen; clipboard-write; encrypted-media; accelerometer; gyroscope"
+  loading="lazy"
+></iframe>
+
+    </div>
+  </section>
+
+  <!-- Proposal Form -->
+  <section class="p-6 max-w-4xl mx-auto bg-white rounded-3xl shadow-xl mt-6 animate-up">
+    <h2 class="text-2xl font-semibold text-purple-700 text-center mb-6">Submit a Website Proposal</h2>
+    <form id="proposalForm" class="space-y-4">
+      <input type="text" id="clientName" placeholder="Your Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <input type="email" id="clientEmail" placeholder="Your Email" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <input type="text" id="businessName" placeholder="Business/Company Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <label class="block font-semibold">Select Features You Want:</label>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700">
+        <label><input type="checkbox" value="Home Page"> Home Page</label>
+        <label><input type="checkbox" value="About Us"> About Us</label>
+        <label><input type="checkbox" value="Services"> Services</label>
+        <label><input type="checkbox" value="Contact Form"> Contact Form</label>
+        <label><input type="checkbox" value="Gallery/Portfolio"> Gallery</label>
+        <label><input type="checkbox" value="Blog Section"> Blog</label>
+        <label><input type="checkbox" value="Admin Panel"> Admin Panel</label>
+        <label><input type="checkbox" value="Live Chat"> Live Chat</label>
+      </div>
+      <textarea id="additionalInfo" placeholder="Any additional info..." class="w-full p-3 border border-purple-300 rounded-xl"></textarea>
+      <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-105 hover:bg-purple-700 transition-all duration-300">Submit Proposal</button>
+    </form>
+    <p id="successMessage" class="text-green-600 mt-4 hidden">Proposal submitted successfully!</p>
+  </section>
+
+  <!-- Proposal Preview -->
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-xl font-semibold text-center mb-4">📎 Proposal Preview</h2>
+    <p class="text-sm text-center text-gray-600 mb-4 max-w-2xl mx-auto">
+      The downloadable document below is a formal website development proposal with design, pricing, and delivery details.
+    </p>
+    <div id="livePreview" class="bg-white p-6 rounded-xl shadow-lg border border-purple-300 text-gray-800 text-sm md:text-base leading-relaxed space-y-2">
+      <div class="flex items-center justify-between border-b pb-2 mb-2">
+        <div class="text-lg font-bold text-purple-700">MathCloud-Tech Web Service</div>
+        <img src="logo.png" alt="Company Logo" class="h-8">
+      </div>
+      <div id="proposalContent">
+        <p class="text-gray-500 italic text-center">Live proposal preview will appear here as you fill the form.</p>
+      </div>
+      <div class="pt-2 border-t">
+        <p><strong>Signature:</strong> ______________________</p>
+        <p><strong>Date:</strong> ______________________</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-2xl font-semibold text-center mb-4">What Our Clients Say</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
+        <p class="italic">“MathCloud-Tech built our school portal in just 2 weeks. Everything works flawlessly.”</p>
+        <p class="mt-2 font-bold">— Mrs. Grace, Orli Academy</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
+        <p class="italic">“Our company website now attracts more clients thanks to their great design and SEO.”</p>
+        <p class="mt-2 font-bold">— Mr. Bayo, Crescent Holdings</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
+        <p class="italic">“My personal site helped me land freelance gigs. The blog feature is amazing!”</p>
+        <p class="mt-2 font-bold">— Tolu O., Graphic Designer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm p-4 mt-10 text-gray-600 animate-up">
+    &copy; 2025 MathCloud-Tech Web Service. All rights reserved.<br>
+    Suggested domain: <strong>www.mathcloudtech.com.ng</strong>
+  </footer>
+  <div class="watermark">© 2025 MathCloud-Tech</div>
+
+  <!-- Firebase + Live Preview Script -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCNQbqTQvKwrtpbGXHgu56hbAVaKgIQ7nc",
+  authDomain: "mathcloud-72a42.firebaseapp.com",
+  databaseURL: "https://mathcloud-72a42-default-rtdb.firebaseio.com",
+  projectId: "mathcloud-72a42",
+  storageBucket: "mathcloud-72a42.firebasestorage.app",
+  messagingSenderId: "123322117435",
+  appId: "1:123322117435:web:ff3d2ac5c9dedc1a439b1e"
+};
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const form = document.getElementById("proposalForm");
+    const content = document.getElementById("proposalContent");
+    const message = document.getElementById("successMessage");
+
+    form.addEventListener("input", () => {
+      const name = document.getElementById("clientName").value;
+      const email = document.getElementById("clientEmail").value;
+      const business = document.getElementById("businessName").value;
+      const features = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value).join(", ");
+      const info = document.getElementById("additionalInfo").value;
+
+      content.innerHTML = `
+        <p><strong>Client Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Business/Company:</strong> ${business}</p>
+        <p><strong>Selected Features:</strong> ${features}</p>
+        <p><strong>Additional Information:</strong></p>
+        <p>${info}</p>
+      `;
+    });
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("clientName").value.trim();
+  const email = document.getElementById("clientEmail").value.trim();
+  const business = document.getElementById("businessName").value.trim();
+  const features = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value);
+  const info = document.getElementById("additionalInfo").value.trim();
+
+  if (!name || !email || !business) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  db.collection("websiteProposals").add({
+    name,
+    email,
+    business,
+    features,
+    info,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  }).then(() => {
+    alert(`Thanks, ${name}! An invoice will be sent to ${email} shortly.`);
+    form.reset();
+    message.classList.remove("hidden");
+    content.innerHTML = '<p class="text-gray-500 italic text-center">Live proposal preview will appear here as you fill the form.</p>';
+  }).catch(error => {
+    console.error("Submission error:", error);
+    alert("Failed to submit proposal. Please try again later.");
+  });
+});
+
+  </script>
+</body>
+</html>

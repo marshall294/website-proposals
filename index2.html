@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MathCloud-Tech Web Proposal</title>
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-up {
+      animation: fadeInUp 1s ease-out both;
+    }
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #7c3aed;
+      animation: typing 4s steps(40, end), blink .75s step-end infinite;
+      width: 100%;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCjVwHfCK0kiXwes1fbKok-EU-aTnuJ2s",
+      authDomain: "words-a53db.firebaseapp.com",
+      databaseURL: "https://words-a53db-default-rtdb.firebaseio.com",
+      projectId: "words-a53db",
+      storageBucket: "words-a53db.appspot.com",
+      messagingSenderId: "432659334745",
+      appId: "1:432659334745:web:504e12c193a04b0a6c9348"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 to-purple-200 min-h-screen">
+  <header class="bg-white shadow p-4 flex items-center justify-between px-8 animate-up">
+    <div class="flex items-center space-x-4">
+      <img src="logo.png" class="w-10 h-10" alt="logo">
+      <h1 class="text-xl md:text-2xl text-purple-700 font-bold">MathCloud-Tech Web Services</h1>
+    </div>
+    <button onclick="downloadPDF()" class="bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700 text-sm">Download Proposal PDF</button>
+  </header>
+
+  <section class="p-6 max-w-4xl mx-auto text-center animate-up">
+    <h2 class="text-2xl md:text-3xl font-bold text-purple-700 mb-6 typewriter">We Build Smart, Scalable, and Stunning Websites.</h2>
+  </section>
+
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-xl font-semibold text-center mb-4">📎 Downloadable PDF Proposal Preview</h2>
+    <p class="text-sm text-center text-gray-600 mb-4 max-w-2xl mx-auto">The downloadable document below is a formal website development proposal that you can submit to organizations, companies, and individuals. It includes all technical, pricing, and design details formatted for presentation.</p>
+    <div id="livePreview" class="bg-white p-4 rounded-xl shadow-md text-left text-sm text-gray-700"></div>
+  </section>
+
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-2xl font-semibold text-center mb-4">Our Specialties</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl p-4 shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">School Websites</h3>
+        <p>For primary, secondary, and tertiary institutions. Includes portal, login, attendance, result system, and more.</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Company Websites</h3>
+        <p>Corporate design, product showcase, dynamic forms, admin dashboards, email integration, and more.</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
+        <h3 class="text-xl font-bold text-purple-600 mb-2">Personal/Portfolio Websites</h3>
+        <p>Showcase your talent, achievements, blogs, resume/CV, and embedded projects or videos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-2xl font-semibold text-center mb-4">Sample Projects</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <iframe class="w-full h-72 rounded-xl shadow-xl" src="https://orliacademy.online" title="School Website Example"></iframe>
+      <iframe class="w-full h-72 rounded-xl shadow-xl" src="https://creditkarma-7854a.web.app" title="Credit Score Project"></iframe>
+    </div>
+  </section>
+
+  <section class="p-6 max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl mt-6 animate-up">
+    <h2 class="text-2xl font-semibold text-purple-700 text-center mb-6">Submit a Website Proposal</h2>
+    <form id="proposalForm" class="space-y-4">
+      <input type="text" id="clientName" placeholder="Your Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <input type="email" id="clientEmail" placeholder="Your Email" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <input type="text" id="businessName" placeholder="Business/Company Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+      <label class="block font-semibold">Select Features You Want:</label>
+      <div class="grid grid-cols-2 gap-2">
+        <label><input type="checkbox" value="Home Page"> Home Page</label>
+        <label><input type="checkbox" value="About Us"> About Us</label>
+        <label><input type="checkbox" value="Services"> Services</label>
+        <label><input type="checkbox" value="Contact Form"> Contact Form</label>
+        <label><input type="checkbox" value="Gallery/Portfolio"> Gallery</label>
+        <label><input type="checkbox" value="Blog Section"> Blog</label>
+        <label><input type="checkbox" value="Admin Panel"> Admin Panel</label>
+        <label><input type="checkbox" value="Live Chat"> Live Chat</label>
+      </div>
+      <textarea id="additionalInfo" placeholder="Any additional info..." class="w-full p-3 border border-purple-300 rounded-xl"></textarea>
+      <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-purple-700">Submit Proposal</button>
+    </form>
+    <p id="successMessage" class="text-green-600 mt-4 hidden">Proposal submitted successfully!</p>
+  </section>
+
+  <section class="p-6 max-w-6xl mx-auto animate-up">
+    <h2 class="text-2xl font-semibold text-center mb-4">What Our Clients Say</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl transition">
+        <p class="italic">“MathCloud-Tech built our school portal in just 2 weeks. Everything works flawlessly.”</p>
+        <p class="mt-2 font-bold">— Mrs. Grace, Orli Academy</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl transition">
+        <p class="italic">“Our company website now attracts more clients thanks to their great design and SEO.”</p>
+        <p class="mt-2 font-bold">— Mr. Bayo, Crescent Holdings</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl transition">
+        <p class="italic">“My personal site helped me land freelance gigs. The blog feature is amazing!”</p>
+        <p class="mt-2 font-bold">— Tolu O., Graphic Designer</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm p-4 mt-10 text-gray-600 animate-up">
+    &copy; 2025 MathCloud-Tech Web Service. All rights reserved.<br>
+    Suggested domain: <strong>www.mathcloudtech.com.ng</strong>
+  </footer>
+  <div class="watermark">© 2025 MathCloud-Tech</div>
+
+  <script>
+    const form = document.getElementById("proposalForm");
+    const message = document.getElementById("successMessage");
+    const preview = document.getElementById("livePreview");
+
+    form.addEventListener("input", () => {
+      const name = document.getElementById("clientName").value;
+      const email = document.getElementById("clientEmail").value;
+      const business = document.getElementById("businessName").value;
+      const features = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value).join(", ");
+      const info = document.getElementById("additionalInfo").value;
+      preview.innerHTML = `
+        <strong>Name:</strong> ${name}<br>
+        <strong>Email:</strong> ${email}<br>
+        <strong>Business:</strong> ${business}<br>
+        <strong>Features:</strong> ${features}<br>
+        <strong>Additional Info:</strong> ${info}<br>
+        <strong>Signature:</strong> ______________________
+      `;
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("clientName").value;
+      const email = document.getElementById("clientEmail").value;
+      const business = document.getElementById("businessName").value;
+      const features = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value);
+      const info = document.getElementById("additionalInfo").value;
+
+      db.collection("websiteProposals").add({
+        name, email, business, features, info, timestamp: new Date()
+      }).then(() => {
+        message.classList.remove("hidden");
+        form.reset();
+        preview.innerHTML = "";
+      });
+    });
+
+    function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('p', 'mm', 'a4');
+      const logo = new Image();
+      logo.src = 'logo.png';
+      const now = new Date();
+      const dateStr = now.toDateString();
+
+      logo.onload = function () {
+        doc.addImage(logo, 'PNG', 10, 10, 20, 20);
+        doc.setFontSize(14);
+        doc.setTextColor(91, 33, 182);
+        doc.text("Website Development Proposal", 35, 20);
+
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(10);
+        doc.text("Submitted by:", 10, 30);
+        doc.text("MathCloud-Tech Web Service", 10, 35);
+        doc.text("Email: marshall12340@gmail.com", 10, 40);
+        doc.text("Phone: +2348102341648", 10, 45);
+        doc.text("Date: " + dateStr, 10, 50);
+
+        let y = 60;
+        const lines = [
+          "Proposal for Website Design & Development",
+          "Dear [Client's Name / Company Name],",
+          "Thank you for considering MathCloud-Tech Web Service for your website design and development needs. We are pleased to present this proposal outlining the scope, deliverables, timeline, and cost of creating a professional and modern company website tailored to your brand.",
+          "",
+          "1. Project Overview",
+          "We propose the design and development of a fully responsive, modern, and user-friendly company website that reflects your brand, supports your services/products, and enhances online presence. The website will include core business information, interactive features, SEO optimization, and mobile compatibility.",
+          "",
+          "2. Features & Functionality",
+          "A. Core Pages:",
+          "- Home", "- About Us", "- Services / Products", "- Gallery / Portfolio", "- Blog or News (optional)", "- Contact Us (with Google Map and contact form)",
+          "",
+          "B. Functional Features:",
+          "- Custom, responsive UI/UX design",
+          "- Admin panel (optional CMS for blog or updates)",
+          "- WhatsApp & social media integration",
+          "- Live chat plugin (optional)",
+          "- SEO basic optimization",
+          "- SSL Certificate integration (for security)",
+          "- Contact Form with auto email reply",
+          "- Google Map integration",
+          "- Performance optimization for fast loading",
+          "",
+          "3. Technical Details",
+          "Technology Stack: HTML, CSS, JavaScript, PHP or Firebase (optional), CMS (WordPress or custom)",
+          "Hosting Type: Shared or Cloud-based (as preferred)",
+          "CMS: Optional (WordPress or Custom Admin Panel)",
+          "",
+          "4. Timeline",
+          "Milestone	Duration",
+          "Requirements & Planning	1 – 2 days",
+          "Design & Prototyping	3 – 5 days",
+          "Development & Testing	5 – 7 days",
+          "Final Review & Deployment	1 – 2 days",
+          "Total Estimated Time	10 – 14 days",
+          "",
+          "5. Cost Breakdown (in Naira ₦)",
+          "Item	Amount (₦)",
+          "Domain Name (1 year)	₦55,000",
+          "Web Hosting (1 year)	₦35,000",
+          "SSL Certificate	₦8,000",
+          "Website Design & Development	₦150,000",
+          "Admin Panel (Optional CMS)	₦40,000",
+          "Maintenance & Support (1 Year)	₦15,000",
+          "Total Estimated Cost	₦303,000",
+          "",
+          "6. Payment Terms",
+          "60% upfront to commence the project",
+          "40% upon completion and approval",
+          "Account: Unity Bank, 0025035416, Marshall Jacob",
+          "",
+          "7. Deliverables",
+          "- Fully functional website (all pages and features)",
+          "- Admin access (if CMS is included)",
+          "- Source files and backups",
+          "- Hosting and domain credentials",
+          "- Support documentation / video guide (if required)",
+          "",
+          "8. About Us – MathCloud-Tech Web Service",
+          "MathCloud-Tech Web Service is a creative tech firm focused on providing reliable, innovative, and scalable web solutions. With a team of experienced designers and developers, we deliver excellence through clean code, stunning UI/UX, and customer-centric service.",
+          "",
+          "9. Next Steps",
+          "We look forward to your approval so we can begin immediately. Kindly sign below or send a confirmation via email to proceed.",
+          "",
+          "Client Signature: _________________________",
+          "Date: _________________________",
+          "",
+          "Accepted by MathCloud-Tech Web Service",
+          "Signature: _________________________",
+          "Date: _________________________"
+        ];
+
+        lines.forEach(line => {
+          if (y > 280) {
+            doc.addPage();
+            y = 20;
+          }
+          doc.text(line, 10, y);
+          y += 6;
+        });
+
+        doc.save("MathCloud_Web_Proposal.pdf");
+      }
+    }
+  </script>
+</body>
+</html>
