@@ -1,17 +1,17 @@
 {
   "name": "website-proposals",
   "version": "1.0.0",
+  "description": "MathCloud-Tech website proposal form and admin dashboard",
+  "main": "tailwind.config.js",
   "scripts": {
     "build": "tailwindcss -i ./input.css -o ./output.css --minify"
   },
-  "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11"
+  "dependencies": {
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.21",
+    "autoprefixer": "^10.4.14"
   },
-  "main": "tailwind.config.js",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "author": "Marshall Jacob",
+  "license": "ISC"
 }
