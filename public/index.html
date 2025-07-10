@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,8 @@
   <link rel="icon" href="logo.png" type="image/png"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <link href="output.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <style>
     body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
     @keyframes fadeInUp {
@@ -47,24 +51,279 @@
     </p>
   </section>
 
-  <!-- Our Specialties -->
-  <section class="p-6 max-w-6xl mx-auto animate-up">
-    <h2 class="text-2xl font-semibold text-center mb-4">Our Specialties</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
-        <h3 class="text-lg font-bold text-purple-600 mb-2">School Websites</h3>
-        <p>Portals, result checker, login, attendance & full backend systems.</p>
+<section class="p-6 max-w-6xl mx-auto" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-animate {
+      animation: fadeInUp 1s ease forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-animate:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .slider img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slider img.active {
+      opacity: 1;
+    }
+
+    .icon-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 15px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+
+  <h2 class="text-3xl font-bold text-center mb-10 text-purple-700">All Our Services</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- School Website -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider1">
+        <img src="https://muffingroup.com/blog/wp-content/uploads/2021/08/beschoo.jpg" class="active">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHt0NWzFKPWHQ_ziOPOC6bdi22TF-YyLlMpg&s">
+        <img src="https://www.figma.com/community/resource/890e32e7-f29c-4c40-993a-93eb5b01c71c/thumbnail">
+        <img src="https://templatelab.com/wp-content/uploads/2020/04/Homeschool-Attendance-Sheet-01-TemplateLab.com_.jpg">
       </div>
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
-        <h3 class="text-lg font-bold text-purple-600 mb-2">Company Websites</h3>
-        <p>Corporate branding, product showcase, dashboards, and lead capture forms.</p>
-      </div>
-      <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg">
-        <h3 class="text-lg font-bold text-purple-600 mb-2">Portfolio Websites</h3>
-        <p>Perfect for freelancers, designers, professionals — embed work and videos.</p>
-      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">School Websites</h3>
+      <p class="text-gray-700">Modern portals including result checkers, student login, attendance tracking, and complete backend systems.</p>
     </div>
-  </section>
+
+    <!-- Online Exams -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQApqthyG4uoBWGgecm1SMLjGXjQ1Khrkvt3g&s">
+        <img src="https://dansolschools.com/wp-content/uploads/2022/07/291961209_2120303888144139_6240309495862717608_n.jpg">
+        <img src="https://lh6.googleusercontent.com/Ccp7Ns6IUyemONSSFKRKGAvA8GynE_y7WelJvtCB3rrFyLvlTkP7NSFkOKNo1glKU8T4CQH05ObA9NOxDeVIFKyPfag9OofT3DXMEx8Y2eiCgcPVQn8gI35B_24RfCrlBPwYLWFgFhuPu_okww">
+        <img src="https://schoolviewers.com/uploads/posts/sch0_st0-ar_650x650-20230331090610.webp" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Online Exams & CBT</h3>
+      <p class="text-gray-700">Customized Computer-Based Testing platforms with auto-marking, secure login, and real-time reports.</p>
+    </div>
+
+    <!-- Parent Portal -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider3">
+        <img src="https://matrixschools.schoolsfocus.net/uploads/3BD1FAB840DA/frontend_image/e-portal.png">
+        <img src="https://anak2u.com.my/wp-content/uploads/2020/11/admin-portal-anak2u-2.png">
+        <img src="https://commongoalsystems.zendesk.com/hc/article_attachments/115004332952/GotoParentPortal.png">
+        <img src="https://commongoalsystems.zendesk.com/hc/article_attachments/115004333032/SingleViewGoto.png" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Parent & Admin Portals</h3>
+      <p class="text-gray-700">Real-time communication dashboards for parents and admins, including fees, reports, and student updates.</p>
+    </div>
+
+    <!-- Company Websites -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider4">
+        <img src="https://www.webcitz.com/wp-content/uploads/2022/09/blavity_inc.jpg">
+        <img src="https://www.vandelaydesign.com/wp-content/uploads/iti.jpg">
+        <img src="https://cdn.shopify.com/s/files/1/0840/8370/3830/files/1603897322-image6.png">
+        <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2023/06/seamwork-website-homepage.webp" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Company Websites</h3>
+      <p class="text-gray-700">Corporate branding, product showcase, dashboards, and lead capture forms.</p>
+    </div>
+
+    <!-- E-Commerce Sites -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider5">
+        <img src="https://cmsmart.net/images/community/8382/banner.jpg">
+        <img src="https://neilpatel.com/wp-content/uploads/2023/02/create-ecommerce-website-006.webp">
+        <img src="https://invoice.ng/blog/wp-content/uploads/2017/07/jumia-nigeria-website.jpg">
+        <img src="https://i0.wp.com/www.magetop.com/blog/wp-content/uploads/2019/12/Top-10-eCommerce-Websites.png?fit=740%2C430&ssl=1" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">E-Commerce Sites</h3>
+      <p class="text-gray-700">Online stores with payment integration, cart systems, product listings, and order tracking.</p>
+    </div>
+
+    <!-- Portfolio & Branding -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider6">
+        <img src="https://s.tmimgcdn.com/scr/1200x627/374700/brand-portfolio-digital-powerpoint-template_374784-original.jpg">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr5-FOOK0IFKFlS6N7CgdHSGvmLlnDJ9g1Cw&s">
+        <img src="https://s3-alpha.figma.com/hub/file/2177897359957218080/68c0bab6-a540-45d6-9755-49eae30dbb72-cover.png">
+        <img src="https://www.unsell.design/wp-content/uploads/2024/05/764496423_Template-Featured-image.jpg" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Portfolio & Branding</h3>
+      <p class="text-gray-700">Creative portfolio websites, brand identity, personal branding, and digital presence building.</p>
+    </div>
+
+    <!-- Birthday Web Pages -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider7">
+        <img src="https://img.freepik.com/free-psd/flat-design-birthday-celebration-landing-page_23-2150510685.jpg?semt=ais_items_boosted&w=740">
+        <img src="https://img.freepik.com/free-vector/landing-page-template-birthday-celebration_23-2148675191.jpg">
+        <img src="https://i.ytimg.com/vi/-DESqMuaOZ0/maxresdefault.jpg">
+        <img src="https://img.freepik.com/free-psd/birthday-celebration-landing-page-template_23-2149967071.jpg?semt=ais_hybrid&w=740" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Birthday Web Pages</h3>
+      <p class="text-gray-700">Create beautiful birthday pages with countdowns, photo albums, RSVP forms, and messages from friends.</p>
+    </div>
+
+    <!-- Wedding Pages -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider8">
+        <img src="https://withjoy.com/assets/public/marcom-prod/wedding-website/hero/ww-mobile-hero-2.jpg?m_resize=w600&opt=default&resize=w600&ver=2">
+        <img src="https://assets.rileygrey.com/assets/marketing2023/wedding_hero_image-f3476194.jpg">
+        <img src="https://blogcdn.paperlust.co/blog/wp-content/uploads/2019/12/Garden-Window-Suite-Overhead-.jpg">
+        <img src="https://www.brides.com/thmb/Zs5hVTNsjN9Oq4Dov0zSs_kq1mg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/wedding-website-our-story-examples-samantha-kevin-afc01155b10b406785937d0ea4c94c84.png" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Wedding Pages</h3>
+      <p class="text-gray-700">Celebrate love with elegant wedding pages including couple stories, photo galleries, and event schedules.</p>
+    </div>
+
+    <!-- Family Intranet -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider9">
+        <img src="https://images.template.net/wp-content/uploads/2016/04/27060638/Family-Portal-CSS-Website-Template.jpg">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCceKZ_FjxWB9gCdXI6sDBgPBjhyGZEIKj4w&s">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFFAM1zTzMhKoPYnmd3NxKCwit7gpTbVnmWgLiqeTBgEEdXY1d1lYPW3mCaFnmRPEKer4&usqp=CAU">
+        <img src="https://images01.nicepagecdn.com/page/72/32/website-template-preview-72327.jpg" class="active">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Family Intranet</h3>
+      <p class="text-gray-700">Private family portals with event calendars, shared albums, announcements, and group chats.</p>
+    </div>
+  </div>
+
+  <script>
+    function initSlider(sliderId) {
+      const slider = document.getElementById(sliderId);
+      const images = slider.querySelectorAll('img');
+      let current = 0;
+      setInterval(() => {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+      }, 4000);
+    }
+
+    for (let i = 1; i <= 9; i++) initSlider('slider' + i);
+  </script>
+</section>
+<section class="p-6 max-w-6xl mx-auto" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-animate {
+      animation: fadeInUp 1s ease forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-animate:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .slider img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slider img.active {
+      opacity: 1;
+    }
+
+    .icon-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 15px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+
+  <h2 class="text-3xl font-bold text-center mb-10 text-purple-700">Hotel website</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- Existing Cards Here -->
+
+    <!-- Hotel Websites -->
+    <div class="bg-white p-6 rounded-2xl shadow-md card-animate text-center">
+      <div class="slider" id="slider10">
+        <img src="https://www.vacationlabs.com/wp-content/uploads/2017/08/hotels-820x409.png" class="active">
+        <img src="https://www.hubspot.com/hs-fs/hubfs/emailmarketing_24-4.webp?width=650&height=306&name=emailmarketing_24-4.webp">
+        <img src="https://images.squarespace-cdn.com/content/v1/571a88642b8dde690c217bf0/1620132098021-RTNMNHI49PHVKD3UF9WH/hotel-website-design-examples-social-proof-example.jpg">
+        <img src="https://htmlburger.com/blog/wp-content/uploads/2024/03/minimalist-website-for-hotel.png">
+      </div>
+      <h3 class="text-xl font-semibold text-purple-600 mb-2">Hotel Websites</h3>
+      <p class="text-gray-700">Elegant booking websites for hotels and resorts with room listings, image galleries, and reservation forms.</p>
+    </div>
+  </div>
+
+  <script>
+    function initSlider(sliderId) {
+      const slider = document.getElementById(sliderId);
+      const images = slider.querySelectorAll('img');
+      let current = 0;
+      setInterval(() => {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+      }, 4000);
+    }
+
+    for (let i = 1; i <= 10; i++) initSlider('slider' + i);
+  </script>
+</section>
+
 
   <!-- Sample Projects -->
   <section class="p-6 max-w-6xl mx-auto animate-up">
@@ -102,50 +361,172 @@
     </div>
   </section>
 
-  <!-- Proposal Form -->
-  <section class="p-6 max-w-4xl mx-auto bg-white rounded-3xl shadow-xl mt-6 animate-up">
-    <h2 class="text-2xl font-semibold text-purple-700 text-center mb-6">Submit a Website Proposal</h2>
-    <form id="proposalForm" class="space-y-4">
-      <input type="text" id="clientName" placeholder="Your Name" required class="w-full p-3 border border-purple-300 rounded-xl">
-      <input type="email" id="clientEmail" placeholder="Your Email" required class="w-full p-3 border border-purple-300 rounded-xl">
-      <input type="text" id="businessName" placeholder="Business/Company Name" required class="w-full p-3 border border-purple-300 rounded-xl">
-      <label class="block font-semibold">Select Features You Want:</label>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700">
-        <label><input type="checkbox" value="Home Page"> Home Page</label>
-        <label><input type="checkbox" value="About Us"> About Us</label>
-        <label><input type="checkbox" value="Services"> Services</label>
-        <label><input type="checkbox" value="Contact Form"> Contact Form</label>
-        <label><input type="checkbox" value="Gallery/Portfolio"> Gallery</label>
-        <label><input type="checkbox" value="Blog Section"> Blog</label>
-        <label><input type="checkbox" value="Admin Panel"> Admin Panel</label>
-        <label><input type="checkbox" value="Live Chat"> Live Chat</label>
-      </div>
-      <textarea id="additionalInfo" placeholder="Any additional info..." class="w-full p-3 border border-purple-300 rounded-xl"></textarea>
-      <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-105 hover:bg-purple-700 transition-all duration-300">Submit Proposal</button>
-    </form>
-    <p id="successMessage" class="text-green-600 mt-4 hidden">Proposal submitted successfully!</p>
-  </section>
+<!-- Proposal Form -->
+<section class="p-6 max-w-4xl mx-auto bg-white rounded-3xl shadow-xl mt-6 font-serif">
+  <h2 class="text-2xl text-purple-700 font-bold text-center mb-6">
+    Didn’t find what you need in the downloaded proposal?<br>
+    Submit your custom website request below.
+  </h2>
 
-  <!-- Proposal Preview -->
-  <section class="p-6 max-w-6xl mx-auto animate-up">
-    <h2 class="text-xl font-semibold text-center mb-4">📎 Proposal Preview</h2>
-    <p class="text-sm text-center text-gray-600 mb-4 max-w-2xl mx-auto">
-      The downloadable document below is a formal website development proposal with design, pricing, and delivery details.
-    </p>
-    <div id="livePreview" class="bg-white p-6 rounded-xl shadow-lg border border-purple-300 text-gray-800 text-sm md:text-base leading-relaxed space-y-2">
-      <div class="flex items-center justify-between border-b pb-2 mb-2">
-        <div class="text-lg font-bold text-purple-700">MathCloud-Tech Web Service</div>
-        <img src="logo.png" alt="Company Logo" class="h-8">
+  <form id="proposalForm" class="space-y-5">
+    <input type="text" id="clientName" placeholder="Your Full Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+    <input type="email" id="clientEmail" placeholder="Your Email Address" required class="w-full p-3 border border-purple-300 rounded-xl">
+    <input type="text" id="businessName" placeholder="Business or Project Name" required class="w-full p-3 border border-purple-300 rounded-xl">
+
+    <label class="block font-semibold text-gray-700">Select the Features You Want:</label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-800">
+      <!-- Features -->
+      <label><input type="checkbox" name="features" value="Home Page"> Home Page</label>
+      <label><input type="checkbox" name="features" value="About Us Page"> About Us Page</label>
+      <label><input type="checkbox" name="features" value="Services Page"> Services Page</label>
+      <label><input type="checkbox" name="features" value="Contact Form"> Contact Form</label>
+      <label><input type="checkbox" name="features" value="Gallery / Portfolio"> Gallery / Portfolio</label>
+      <label><input type="checkbox" name="features" value="Blog / News Section"> Blog / News Section</label>
+      <label><input type="checkbox" name="features" value="Admin Dashboard"> Admin Dashboard</label>
+      <label><input type="checkbox" name="features" value="Live Chat Integration"> Live Chat Integration</label>
+      <label><input type="checkbox" name="features" value="Student Portal (for Schools)"> Student Portal (for Schools)</label>
+      <label><input type="checkbox" name="features" value="Online Class Timetable"> Online Class Timetable</label>
+      <label><input type="checkbox" name="features" value="Hotel Room Booking"> Hotel Room Booking</label>
+      <label><input type="checkbox" name="features" value="Restaurant Menu / Ordering"> Restaurant Menu / Ordering</label>
+      <label><input type="checkbox" name="features" value="Event Countdown / RSVP"> Event Countdown / RSVP</label>
+      <label><input type="checkbox" name="features" value="Gift Registry / Wish List"> Gift Registry / Wish List</label>
+      <label><input type="checkbox" name="features" value="Payment Integration (Paystack, Flutterwave)"> Payment Integration (Paystack, Flutterwave)</label>
+    </div>
+
+    <textarea id="additionalInfo" placeholder="Describe your project idea or any specific requirements..." class="w-full p-3 border border-purple-300 rounded-xl"></textarea>
+    <input type="text" id="clientBudget" placeholder="Proposed Budget (e.g., ₦300,000)" class="w-full p-3 border border-purple-300 rounded-xl">
+
+    <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-xl shadow-lg transform hover:scale-105 hover:bg-purple-700 transition-all duration-300">
+      Submit Proposal
+    </button>
+  </form>
+
+  <p id="successMessage" class="text-green-600 mt-4 hidden">Proposal submitted successfully!</p>
+</section>
+
+<!-- Proposal Preview -->
+<section class="p-6 md:p-10 max-w-5xl mx-auto mt-10 font-serif bg-gray-100 rounded-2xl shadow-md animate-up">
+  <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">📎 Custom Website Proposal Preview</h2>
+  <p class="text-base text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+    This is a live preview of your custom website proposal, including selected features, budget, and contact details.
+  </p>
+
+  <div id="livePreview" class="bg-white w-full rounded-2xl shadow-lg border border-purple-300 text-gray-900 leading-8 text-base space-y-8">
+    <div class="space-y-6" id="pdfContent">
+      <div class="flex justify-between items-start border-b border-gray-300 px-6 pt-6 pb-4">
+        <div>
+          <h3 class="text-xl font-bold text-purple-700">MathCloud-Tech Web Service</h3>
+          <p class="text-sm text-gray-600">Email: marshall12340@gmail.com<br>Phone: +2348102341648</p>
+        </div>
+        <img src="logo.png" alt="Company Logo" class="h-12"> <!-- resized logo -->
       </div>
-      <div id="proposalContent">
-        <p class="text-gray-500 italic text-center">Live proposal preview will appear here as you fill the form.</p>
+
+      <div id="proposalContent" class="px-6">
+        <p class="italic text-center text-gray-500">Live proposal preview will appear here as you fill the form.</p>
       </div>
-      <div class="pt-2 border-t">
-        <p><strong>Signature:</strong> ______________________</p>
-        <p><strong>Date:</strong> ______________________</p>
+
+      <div class="border-t border-gray-300 px-6 pt-4 pb-6">
+        <p class="mb-2"><strong>Authorized Signature:</strong></p>
+        <img src="signature.png" class="h-10 w-auto mb-2 rounded-md shadow-md">
+        <p><strong>Date:</strong> <span id="currentDate"></span></p>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="text-center mt-4">
+    <button onclick="downloadPDF()" class="bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-green-700 transition-all duration-300">
+      📄 Download Proposal as PDF
+    </button>
+  </div>
+</section>
+
+<!-- PDF + Preview Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  // Set today's date
+  document.getElementById("currentDate").textContent = new Date().toLocaleDateString(undefined, {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  function updatePreview() {
+    const name = document.getElementById("clientName").value.trim();
+    const email = document.getElementById("clientEmail").value.trim();
+    const business = document.getElementById("businessName").value.trim();
+    const budget = document.getElementById("clientBudget").value.trim();
+    const additional = document.getElementById("additionalInfo").value.trim();
+    const selectedFeatures = Array.from(document.querySelectorAll('input[name="features"]:checked')).map(cb => cb.value);
+
+    let featureListHTML = `<div style="margin-top: 0.5rem;"><strong>Selected Features:</strong></div>`;
+    if (selectedFeatures.length > 0) {
+      featureListHTML += `<div style="margin-left: 20px;"><ul style="list-style-type: disc; padding-left: 1em;">`;
+      selectedFeatures.forEach(feature => {
+        featureListHTML += `<li style="margin-bottom: 0.3em;">${feature}</li>`;
+      });
+      featureListHTML += `</ul></div>`;
+    } else {
+      featureListHTML += `<div style="color: gray; font-style: italic;">No features selected.</div>`;
+    }
+
+    document.getElementById("proposalContent").innerHTML = `
+      <div class="mb-4">
+        <p><strong>Client Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Project / Business Name:</strong> ${business}</p>
+      </div>
+      <div class="mb-4">${featureListHTML}</div>
+      <div class="mb-4">
+        <p><strong>Additional Information:</strong></p>
+        <p>${additional || "<span class='text-gray-400 italic'>None provided.</span>"}</p>
+      </div>
+      <div>
+        <p><strong>Proposed Budget:</strong> ${budget || "<span class='text-gray-400 italic'>Not specified</span>"}</p>
+      </div>
+    `;
+  }
+
+  // Attach live updates
+  document.querySelectorAll("#proposalForm input, #proposalForm textarea").forEach(el => {
+    el.addEventListener("input", updatePreview);
+  });
+  document.querySelectorAll('input[name="features"]').forEach(cb => {
+    cb.addEventListener("change", updatePreview);
+  });
+
+  // On form submit
+  document.getElementById("proposalForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    updatePreview();
+    document.getElementById("successMessage").classList.remove("hidden");
+  });
+function downloadPDF() {
+  updatePreview();
+  const element = document.getElementById("pdfContent");
+
+  const opt = {
+    margin: 0.5,
+    filename: 'Website_Proposal.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      allowTaint: false,
+      logging: true,
+      scrollY: 0
+    },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['avoid-all', 'css'] }
+  };
+
+  html2pdf().set(opt).from(element).save().catch(error => {
+    console.error("PDF download error:", error);
+    alert("PDF download failed. Please check your image sources or try again.");
+  });
+}
+
+</script>
+
+
+
 
   <!-- Testimonials -->
   <section class="p-6 max-w-6xl mx-auto animate-up">
